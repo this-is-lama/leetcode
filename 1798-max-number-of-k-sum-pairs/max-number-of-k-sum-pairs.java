@@ -1,21 +1,20 @@
 class Solution {
     public int maxOperations(int[] nums, int k) {
-		Map<Integer, Integer> hash = new HashMap<>();
-		for (int i : nums) {
-			hash.merge(i, 1, Integer::sum);
-		}
-		int result = 0;
-		for (var entry : hash.entrySet()) {
-			int x = entry.getKey();
-			int value = entry.getValue();
-			if (x == (double) k / 2) {
-				result += value / 2;
+		Arrays.sort(nums);
+		int left = 0;
+		int right = nums.length - 1;
+		int operations = 0;
+		while (left < right) {
+			if (nums[left] == k - nums[right]) {
+				operations++;
+				left++;
+				right--;
+			} else if (nums[left] > k - nums[right]) {
+				right--;
 			} else {
-				result += Math.min(value, hash.getOrDefault(k - x, 0));
-				hash.replace(x, 0);
-				hash.replace(k - x, 0);
+				left++;
 			}
 		}
-		return result;
+		return operations;
 	}
 }
