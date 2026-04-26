@@ -19,10 +19,10 @@ class Solution {
 	public int replace(char[] chars, char c, int count, int left) {
 		char[] substring;
 		if (count == 1) {
-			substring = new char[]{c};
-		} else {
-			substring = (String.valueOf(c) + count).toCharArray();
-		}
+			chars[left] = c;
+			return left + 1;
+		} 
+		substring = (String.valueOf(c) + count).toCharArray();
 		System.arraycopy(substring, 0, chars, left, substring.length);
 		return left + substring.length;
 	}
