@@ -5,12 +5,12 @@ class Solution {
 
 		int first = 0;
 		int second = 0;
-		while (first < s.length() && second < t.length()) {
-			if (t.charAt(second) == s.charAt(first)) {
+		char[] sc = s.toCharArray();
+		char[] tc = t.toCharArray();
+		while (first < sc.length && second < tc.length) {
+			if (sc[first] == tc[second]) {
 				first++;
-				if (first == s.length()) {
-					return true;
-				}
+				if (first == sc.length) return true;
 			}
 			second++;
 
