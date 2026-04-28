@@ -1,20 +1,19 @@
 class Solution {
 
 	public boolean uniqueOccurrences(int[] arr) {
-		Arrays.sort(arr);
-		Set<Integer> set = new HashSet<>();
-		
-		int right = 0;
-		while (right < arr.length) {
-			int digit = arr[right];
-			int count = 1;
-			while (right < arr.length && arr[right] == digit) {
-				count++;
-				right++;
+		int[] counts = new int[2001];
+		boolean[] repeats = new boolean[1001];
+		for (int i : arr) {
+			counts[i + 1000]++;
+		}
+		for (int count : counts) {
+			if (count == 0) {
+				continue;
 			}
-			if (!set.add(count)) {
+			if (repeats[count]) {
 				return false;
 			}
+			repeats[count] = true;
 		}
 		return true;
 	}
