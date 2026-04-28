@@ -1,13 +1,18 @@
 class Solution {
 
 	public boolean uniqueOccurrences(int[] arr) {
-		Map<Integer, Integer> map = new HashMap<>();
-		for (int i : arr) {
-			map.merge(i, 1, Integer::sum);
-		}
+		Arrays.sort(arr);
 		Set<Integer> set = new HashSet<>();
-		for (int value : map.values()) {
-			if (!set.add(value)) {
+		
+		int right = 0;
+		while (right < arr.length) {
+			int digit = arr[right];
+			int count = 1;
+			while (right < arr.length && arr[right] == digit) {
+				count++;
+				right++;
+			}
+			if (!set.add(count)) {
 				return false;
 			}
 		}
