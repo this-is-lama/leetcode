@@ -8,18 +8,14 @@ class Solution {
 		for (char c : word2.toCharArray()) {
 			freq2[c - 'a']++;
 		}
-		int[] chars1 = new int[26];
-		int[] chars2 = new int[26];
+
 		for (int i = 0; i < 26; i++) {
-			if (freq1[i] > 0 && freq2[i] > 0) {
-				chars1[i] = freq1[i];
-				chars2[i] = freq2[i];
-			} else if (freq1[i] != 0 || freq2[i] != 0) {
+			if (freq1[i] > 0 && freq2[i] == 0 || freq2[i] > 0 && freq1[i] == 0) {
 				return false;
 			}
 		}
-		Arrays.sort(chars1);
-		Arrays.sort(chars2);
-		return Arrays.equals(chars1, chars2);
+		Arrays.sort(freq1);
+		Arrays.sort(freq2);
+		return Arrays.equals(freq1, freq2);
 	}
 }
