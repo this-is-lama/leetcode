@@ -15,20 +15,20 @@
  */
 class Solution {
     public int goodNodes(TreeNode root) {
-		List<Integer> list = new ArrayList<>();
-		countGoodNodes(root, Integer.MIN_VALUE, list);
-		return list.size();
+		int[] count = new int[]{0};
+		countGoodNodes(root, Integer.MIN_VALUE, count);
+		return count[0];
 	}
-	public void countGoodNodes(TreeNode root, int max, List<Integer> nodes) {
+	public void countGoodNodes(TreeNode root, int max, int[] count) {
 		if (root.val >= max) {
-			nodes.add(root.val);
+			count[0]++;
 			max = root.val;
 		}
 		if (root.left != null) {
-			countGoodNodes(root.left, max, nodes);
+			countGoodNodes(root.left, max, count);
 		}
 		if (root.right != null) {
-			countGoodNodes(root.right, max, nodes);
+			countGoodNodes(root.right, max, count);
 		}
 	}
 }
