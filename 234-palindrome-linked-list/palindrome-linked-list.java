@@ -12,20 +12,19 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
 		if (head == null || head.next == null) return true;
 
-		Stack<Integer> stack = new Stack<>();
+		List<Integer> list = new ArrayList<>();
 		ListNode curr = head;
-		
 		while (curr != null) {
-			stack.push(curr.val);
+			list.add(curr.val);
 			curr = curr.next;
 		}
 		
-		curr = head;
-		while (!stack.isEmpty() && curr != null) {
-			if (stack.pop() != curr.val) {
+		int left = 0;
+		int right = list.size() - 1;
+		while (left < right) {
+			if (!Objects.equals(list.get(left++), list.get(right--))) {
 				return false;
 			}
-			curr = curr.next;
 		}
 
 		return true;
