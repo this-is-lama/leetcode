@@ -11,24 +11,23 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
 		if (head == null || head.next == null) return true;
-		
-		List<Integer> list = new java.util.LinkedList<>();
+
+		Stack<Integer> stack = new Stack<>();
 		ListNode curr = head;
+		
 		while (curr != null) {
-			list.add(curr.val);
+			stack.push(curr.val);
 			curr = curr.next;
 		}
 		
-		while (!list.isEmpty()) {
-			if (!Objects.equals(list.getFirst(), list.getLast())) {
+		curr = head;
+		while (!stack.isEmpty() && curr != null) {
+			if (stack.pop() != curr.val) {
 				return false;
 			}
-			list.removeFirst();
-			if (!list.isEmpty()) {
-				list.removeLast();
-			}
+			curr = curr.next;
 		}
-		
+
 		return true;
 	}
 }
