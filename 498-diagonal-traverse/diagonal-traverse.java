@@ -1,5 +1,6 @@
 class Solution {
-    	public static int[] findDiagonalOrder(int[][] mat) {
+    
+    public int[] findDiagonalOrder(int[][] mat) {
 		int m = mat.length;
 		int n = mat[0].length;
 		int[] result = new int[n * m];
@@ -10,9 +11,7 @@ class Solution {
 		}
 		return result;
 	}
-
-	public static void up (int[] position, int[][] mat, int[] result) {
-		int m = mat.length;
+	public void up (int[] position, int[][] mat, int[] result) {
 		int n = mat[0].length;
 		int i = position[0];
 		int j = position[1];
@@ -31,10 +30,8 @@ class Solution {
 		position[0] = i;
 		position[1] = j;
 	}
-
-	public static void down (int[] position, int[][] mat, int[] result) {
+	public void down (int[] position, int[][] mat, int[] result) {
 		int m = mat.length;
-		int n = mat[0].length;
 		int i = position[0];
 		int j = position[1];
 		while (i < m && j >= 0) {
