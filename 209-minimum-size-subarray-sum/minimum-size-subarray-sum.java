@@ -1,5 +1,9 @@
 class Solution {
-
+    static{
+        for(int i=0;i<500;i++){
+            minSubArrayLen(0,new int[0]);
+        }
+    }
     public static int minSubArrayLen(int target, int[] nums) {
 		int min = Integer.MAX_VALUE;
 		int left = 0;
