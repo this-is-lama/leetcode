@@ -1,7 +1,7 @@
 class Solution {
 
     public static List<List<Integer>> generate(int numRows) {
-		List<List<Integer>> result = new LinkedList<>();
+		List<List<Integer>> result = new ArrayList<>();
 
 		for (int level = 0; level < numRows; level++) {
 			List<Integer> row = new ArrayList<>();
