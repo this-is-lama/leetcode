@@ -19,10 +19,10 @@ class Solution {
 				j--;
 			}
 
-			builder.insert(0, sum % 2);
+			builder.append(sum % 2);
 			carry = sum / 2;
 		}
-		
-		return builder.toString();
-	}
+
+		return builder.reverse().toString();
+    }
 }
