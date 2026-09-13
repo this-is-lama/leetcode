@@ -1,6 +1,5 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-		List<List<String>> result = new ArrayList<>();
 		Map<String, List<String>> map = new HashMap<>();
 
 		for (String str : strs) {
@@ -12,10 +11,6 @@ class Solution {
 			map.computeIfAbsent(key, k -> new ArrayList<>()).add(str);
 		}
 
-		for (var entry : map.entrySet()) {
-			result.add(entry.getValue());
-		}
-
-		return result;
+		return new ArrayList<>(map.values());
 	}
 }
