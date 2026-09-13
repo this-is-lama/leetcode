@@ -3,8 +3,7 @@ class Solution {
 		Set<Character> set = new HashSet<>();
 		char[] chars = s.toCharArray();
 		int index = 0;
-		while (index < chars.length && !set.contains(chars[index])) {
-			set.add(chars[index]);
+		while (index < chars.length && set.add(chars[index])) {
 			index++;
 		}
 		int max = set.size();
@@ -15,10 +14,9 @@ class Solution {
 				set.remove(chars[right]);
 				right++;
 			}
-			while (left < chars.length && !set.contains(chars[left])) {
-				set.add(chars[left]);
-				left++;
+			while (left < chars.length && set.add(chars[left])) {
 				max = Math.max(set.size(), max);
+				left++;
 			}
 		}
 		return max;
