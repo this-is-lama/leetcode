@@ -12,8 +12,8 @@ class Solution {
 			if (isomorphic.containsKey(ch2) && isomorphic.get(ch2) != ch1) {
 				return false;
 			}
-			compliance.put(s.charAt(i), t.charAt(i));
-			isomorphic.put(t.charAt(i), s.charAt(i));
+			compliance.put(ch1, ch2);
+			isomorphic.put(ch2, ch1);
 
 		}
 
